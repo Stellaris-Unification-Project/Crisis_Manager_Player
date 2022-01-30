@@ -7,4 +7,4 @@ tags={
 }
 picture="CmtP50_thumb.png"
 remote_file_id="1535853501"
-supported_version="2.3.*"
+supported_version="3.2.2"
