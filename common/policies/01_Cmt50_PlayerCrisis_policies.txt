@@ -37,10 +37,7 @@ war_doctrine = {
 			factor = 10
 			modifier = {
 				factor = 0
-				NOR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = no
 			}
 		}
 	}
@@ -65,8 +62,7 @@ war_doctrine = {
 		name = no_retreat_doctrine
 		valid = {
 			OR = {
-				has_ethic = ethic_militarist
-				has_ethic = ethic_fanatic_militarist
+				is_militarist = yes
 				has_ethic = ethic_gestalt_consciousness
 				has_civic = civic_fanatic_purifiers
 				CmtTriggerIsPlayerCrisisAggressor = yes
@@ -102,26 +98,20 @@ orbital_bombardment = {
 	}
 	option = {
 		name = orbital_bombardment_selective
-		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		potential = { CmtTriggerIsPlayerCrisisAggressor = no }
 		policy_flags = { orbital_bombardment_selective }
 		AI_weight = {
 			modifier = {
 				factor = 0
-				NOR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = no
 			}
 		}
 	}
 	option = {
 		name = orbital_bombardment_indiscriminate
-		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		potential = { CmtTriggerIsPlayerCrisisAggressor = no }
 		valid = {
-			NOR = {
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-			}
+			is_pacifist = no
 		}
 		policy_flags = { orbital_bombardment_indiscriminate }
 	}
@@ -151,15 +141,13 @@ interference = {
 	potential = { has_met_primitives = yes }
 	option = {
 		name = interference_passive
-		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		potential = { CmtTriggerIsPlayerCrisisAggressor = no }
 		valid = {
 			OR = {
 				is_subject_type = signatory
 				NOR = {
 					has_ethic = ethic_fanatic_xenophobe
-					has_valid_civic = civic_fanatic_purifiers
-					has_valid_civic = civic_hive_devouring_swarm
-					has_valid_civic = civic_machine_terminator
+					is_homicidal = yes
 				}
 			}
 		}
@@ -167,7 +155,7 @@ interference = {
 	}
 	option = {
 		name = interference_active
-		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		potential = { CmtTriggerIsPlayerCrisisAggressor = no }
 		valid = {
 			NOR = {
 				is_subject_type = signatory
@@ -201,10 +189,7 @@ interference = {
 		valid = {
 			NOT = { is_subject_type = signatory }
 			OR = {
-				NOR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = no
 				CmtTriggerIsPlayerCrisisAggressor = yes
 			}
 		}
@@ -229,10 +214,7 @@ interference = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = yes
 			}
 		}
 	}
@@ -242,16 +224,14 @@ pre_sapients = {
 	potential = {
 		OR = {
 			has_country_flag = found_presapients
-			any_planet_within_border = { any_pop = { is_sapient = no } }
+			any_planet_within_border = { any_owned_pop = { is_sapient = no } }
 		}
 	}
 	option = {
 		name = pre_sapients_protect
 		potential = {
 			NOR = {
-				has_valid_civic = civic_machine_terminator
-				has_valid_civic = civic_hive_devouring_swarm
-				has_valid_civic = civic_fanatic_purifiers
+				is_homicidal = yes
 				CmtTriggerIsPlayerCrisisAggressor = yes
 			}
 		}
@@ -268,9 +248,7 @@ pre_sapients = {
 		name = pre_sapients_allow
 		potential = {
 			NOR = {
-				has_valid_civic = civic_machine_terminator
-				has_valid_civic = civic_hive_devouring_swarm
-				has_valid_civic = civic_fanatic_purifiers
+				is_homicidal = yes
 				CmtTriggerIsPlayerCrisisAggressor = yes
 			}
 		}
@@ -286,10 +264,7 @@ pre_sapients = {
 		}
 		valid = {
 			OR = {
-				NOR = {
-					has_ethic = "ethic_xenophile"
-					has_ethic = "ethic_fanatic_xenophile"
-				}
+				is_xenophile = no
 				CmtTriggerIsPlayerCrisisAggressor = yes
 			}
 		}
@@ -306,10 +281,7 @@ pre_sapients = {
 	option = {
 		name = pre_sapients_purge
 		valid = {
-			NOR = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-			}
+			is_xenophile = no
 		}
 		policy_flags = { pre_sapients_purge }
 		
@@ -321,8 +293,7 @@ pre_sapients = {
 				factor = 0
 				CmtTriggerIsPlayableEmpire = yes
 				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_xenophobe = yes
 					has_ai_personality = CmtPersonalityPlayerCrisisAggressor
 					AND = {
 						has_authority = auth_machine_intelligence
@@ -363,10 +334,7 @@ purge = {
 				has_valid_civic = civic_fanatic_purifiers
 			}
 			OR = {
-				NOR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-				}
+				is_xenophile = no
 				CmtTriggerIsPlayerCrisisAggressor = yes
 			}
 		}
@@ -388,8 +356,7 @@ purge = {
 			NOT = { is_subject_type = signatory }
 			OR = {
 				has_ethic = ethic_gestalt_consciousness
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
+				is_xenophobe = yes
 				CmtTriggerIsPlayerCrisisAggressor = yes
 			}
 		}
@@ -402,8 +369,7 @@ purge = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
+					is_pacifist = yes
 					AND = {
 						has_valid_ai_personality = yes
 						NOT = { has_ai_personality_behaviour = purger }

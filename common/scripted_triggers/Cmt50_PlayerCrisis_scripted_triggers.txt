@@ -83,7 +83,7 @@ CmtTriggerPlayerCrisisAggressorCandidateCommon = {
 	hidden_trigger = { CmtTriggerIsPlayableEmpire = yes }
 	custom_tooltip = {
 		fail_text = CmtFailTextRequireIndependency
-		NOT = { is_subject = yes }
+		is_subject = no
 	}
 	custom_tooltip = {
 		fail_text = CmtFailTextRequireNoWar
@@ -134,7 +134,7 @@ CmtTriggerPlayerCrisisAggressorCandidateEdict = {
 	}
 	custom_tooltip = {
 		fail_text = CmtFailTextRequireNoFederation
-		NOT = { has_federation = yes }
+		has_federation = no
 	}
 }
 
@@ -156,7 +156,7 @@ CmtTriggerPlayerCrisisDefenceLeaderCandidate = {
 ### Scope: this = country, target = CmtTargetPlayerCrisisAggressor
 CmtTriggerPlayerCrisisJoinableCountry = {
 	CmtTriggerIsEmpire = yes
-	NOT = { CmtTriggerIsPlayerCrisisAggressor = yes }
+	CmtTriggerIsPlayerCrisisAggressor = no
 	NAND = {
 		has_country_flag = CmtFlagPlayerCrisisDefender
 		is_at_war_with = event_target:CmtTargetPlayerCrisisAggressor

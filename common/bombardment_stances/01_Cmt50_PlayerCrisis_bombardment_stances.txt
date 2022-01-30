@@ -14,7 +14,7 @@ armageddon = {
 	trigger = {
 		owner = { 
 			has_policy_flag = orbital_bombardment_armageddon
-			NOT = { CmtTriggerIsPlayerCrisisAggressor = yes }
+			CmtTriggerIsPlayerCrisisAggressor = no
 		}
 	}
 	

@@ -14,7 +14,7 @@
 can_add_claim = {	
 	hidden_trigger = {
 		if = {
-			limit = { root = { NOT = { CmtTriggerIsPlayableEmpire = yes } } }
+			limit = { root = { CmtTriggerIsPlayableEmpire = no } }
 			always = yes
 		}
 	}
@@ -41,7 +41,7 @@ can_add_claim = {
 		fail_text = CANNOT_ADD_CLAIM_NOT_VALID_EMPIRE 
 		NAND = {
 			exists = owner
-			owner = { NOT = { CmtTriggerIsEmpire = yes } }
+			owner = { CmtTriggerIsEmpire = no }
 		}
 		NOT = { root = { CmtTriggerIsPlayerCrisisAggressor = yes } }
 	}	
@@ -81,18 +81,14 @@ can_add_claim = {
 			exists = owner
 			owner = {
 				OR = {
-					has_valid_civic = civic_hive_devouring_swarm
-					has_valid_civic = civic_fanatic_purifiers
-					has_valid_civic = civic_machine_terminator
+					is_homicidal = yes
 					has_valid_civic = civic_machine_assimilator
 					CmtTriggerIsPlayerCrisisAggressor = yes
 				}
 			}
 			root = {
 				NOR = {
-					has_valid_civic = civic_hive_devouring_swarm
-					has_valid_civic = civic_fanatic_purifiers
-					has_valid_civic = civic_machine_terminator		
+					is_homicidal = yes		
 					has_valid_civic = civic_machine_assimilator
 				}
 			}
